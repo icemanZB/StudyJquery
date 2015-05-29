@@ -1,0 +1,42 @@
+Juqery size() 和 length 的区别
+
+定义和用法
+size() 方法返回被 jQuery 选择器匹配的元素的数量。
+语法
+$(selector).size()
+
+
+jQuery 对象中元素的个数。
+这个函数的返回值与 jQuery 对象的'length' 属性一致。
+用途：可用于统计某个页面中某些项的数量。比如要统计语文成绩小于100的记录数，可以给小于100 的字段赋上<font class="xx">oo</font>。统计出此标签的数量即得结果。
+
+<script language="javascript"  type="text/javascript" src="jquery.min.js"></script>
+<script  language="javascript" type="text/javascript">
+$(document).ready(function(){
+$('#sbt').click(function(){
+var i=$('div').size();//获得div标签的数目
+var j=$('.mm').size();//获得class为mm的font标签的数目
+$('#myspan').html('<strong><font color=red>一共有'+i+'个div标签&nbsp;&nbsp;一共有'+j+'个font标签</font></strong>');
+})
+})
+
+</script>
+<div>div1</div><br>
+<div>div2</div><br>
+<div>div3</div><br>
+<div>div4</div><br>
+<font class="mm">mm1</font><br>
+<font class="mm">mm2</font><br>
+<font class="mm">mm2</font><br>
+<span id="myspan"></span><br>
+<input type="submit" value="计算" id="sbt"/>
+
+总结如下：
+1.length是属性，size()是方法。
+2.如果你只是想获取元素的个数，两者效果一样既 $("img").length 和 $("img").size() 获取的值是一样的；但是如果是获取字符串的长度就只得用length, 如 $("#text").val().length
+看看官网的解释：
+The .size() method is deprecated as og jQuery 1.8. Use the .length property instead.
+The size() method is functionally equivalent to the .length property; however,the .length property because it does not have the overhead of a funtion call.
+jQuery length和size()区别 从上可以看出size()是调用length属性实现的，而且在jquery 1.8后 length取代了 size()  ,因为length不需要返回一个函数调用，更优秀。
+
+-------------------------------------------------------------------------------------------------------------------

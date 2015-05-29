@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-2.0.2.js"></script>
+    <style>
+        ul, h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #nav {
+            border: 1px solid #333;
+            float: left;
+            padding: 5px 0;
+            background: #ccf;
+        }
+
+        #nav ul {
+            padding-left: 20px;
+            display: none;
+        }
+
+        #nav h2 {
+            font-size: 16px;
+            height: 25px;
+            line-height: 25px;
+            padding: 0 15px;
+        }
+
+        #nav h2:hover {
+            color: red;
+        }
+
+        #nav ul.active {
+            display: block;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            $("#nav").find("h2").click(function () {
+                var that = $(this).parent().parent();
+                var aUl = that.find('ul');
+                var aSpan = that.find('span');
+                var oSpan = getFirst($(this));
+                var oUl = getNext($(this));
+                if (oUl) {
+                    if (oUl.attr("class")) {
+                        oUl.attr("class","");
+                        oSpan.html('+');
+                    } else {
+                        aUl.each(function(index){
+                            $(this).attr("class","");
+                            aSpan.eq(index).html('+');
+                        });
+                        oUl.attr("class","active");
+                        oSpan.html('-');
+                    }
+                }
+
+            });
+
+            function getFirst(obj) {
+
+                if (!obj || !obj.children()) return;
+
+                return obj === undefined ? getNext(obj) : obj.children();
+
+            }
+
+            function getNext(obj) {
+
+                if(!obj || !obj.next()) return null;
+
+                return obj === undefined ? getNext(obj) : obj.next();
+
+            }
+        })
+    </script>
+</head>
+<body>
+<ul id="nav">
+    <li>
+        <h2><span>+</span> 第一级菜单 </h2>
+        <ul>
+            <li>
+                <h2><span>+</span> 第二级菜单 </h2>
+                <ul>
+                    <li>
+                        <h2><span>+</span> 第三级菜单 </h2>
+                        <ul>
+                            <li>
+                                <h2> 第四级菜单 </h2>
+                            </li>
+                            <li>
+                                <h2> 第四级菜单 </h2>
+                            </li>
+                            <li>
+                                <h2> 第四级菜单 </h2>
+                            </li>
+                            <li>
+                                <h2> 第四级菜单 </h2>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2> 第三级菜单 </h2>
+                    </li>
+                    <li>
+                        <h2> 第三级菜单 </h2>
+                    </li>
+                    <li>
+                        <h2> 第三级菜单 </h2>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2><span>+</span> 第二级菜单 </h2>
+                <ul>
+                    <li>
+                        <h2> 第三级菜单 </h2>
+                    </li>
+                    <li>
+                        <h2> 第三级菜单 </h2>
+                    </li>
+                    <li>
+                        <h2> 第三级菜单 </h2>
+                    </li>
+                    <li>
+                        <h2><span>+</span> 第三级菜单 </h2>
+                        <ul>
+                            <li>
+                                <h2> 第四级菜单 </h2>
+                            </li>
+                            <li>
+                                <h2> 第四级菜单 </h2>
+                            </li>
+                            <li>
+                                <h2> 第四级级菜单 </h2>
+                            </li>
+                            <li>
+                                <h2> 第四级菜单 </h2>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2> 第二级菜单 </h2>
+            </li>
+            <li>
+                <h2><span>+</span> 第二级菜单 </h2>
+                <ul>
+                    <li>
+                        <h2> 第三级菜单 </h2>
+                    </li>
+                    <li>
+                        <h2> 第三级菜单 </h2>
+                    </li>
+                    <li>
+                        <h2> 第三级菜单 </h2>
+                    </li>
+                    <li>
+                        <h2><span>+</span> 第三级菜单 </h2>
+                        <ul>
+                            <li>
+                                <h2> 第四级菜单 </h2>
+                            </li>
+                            <li>
+                                <h2> 第四级菜单 </h2>
+                            </li>
+                            <li>
+                                <h2> 第四级级菜单 </h2>
+                            </li>
+                            <li>
+                                <h2> 第四级菜单 </h2>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
